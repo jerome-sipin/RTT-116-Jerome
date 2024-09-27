@@ -1,2 +1,2 @@
 # RTT-116-Jerome
-Classwork and homework reo for 2024 RTT-166
+Classwork and homework repo for 2024 RTT-166
