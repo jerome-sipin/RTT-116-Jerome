@@ -125,7 +125,7 @@ public class StringExamples {
         // Potential interview question - why would you use a StringBuffer or a StringBuilder over a regular String?
         // Answer - for memory management! Strings are immutable and the JVM creates new Strings in memory and then has
         // to garbage collect them; whereas Builder and Buffer are mutable and can be changed in memory, thus are more
-        // efficient! 
+        // efficient!
         StringBuffer sb = new StringBuffer();
 
         // append will add something to the end of the string and it has the same effect as concatenating for
@@ -150,7 +150,7 @@ public class StringExamples {
         // the positions you have specified; in this case, it is deleting what
         // is at positions 0 to 2 and then replacing it with what we have specified, "ABCDEF"
         // !!! This will probably be on the KBA.
-        sb.replace(0,3,"ABCDEF"); // string is now ABCDEF1xyz23
+        sb.replace(0, 3, "ABCDEF"); // string is now ABCDEF1xyz23
 
         // We can delete from a string buffer
         sb.delete(0, 3); // string is now DEF1xyz23
@@ -164,7 +164,7 @@ public class StringExamples {
         // !!! KBA Question...
         // Study how this works... it will be on the KBA!!!
         StringBuffer kba = new StringBuffer("ABC");
-        kba.replace(0, 7,"DEFG").insert(0,"12345");
+        kba.replace(0, 7, "DEFG").insert(0, "12345");
         // this will just erase the current 3 characters, and replace it with "DEFG", then insert "12345"
         // at position 0
         // string is now 12345DEFG
@@ -184,7 +184,7 @@ public class StringExamples {
         // ====== String Joiner ======
 
         // The string joiner works kind of like an array.
-        int [] numbers = {1,2,3,4,5,6};
+        int[] numbers = {1, 2, 3, 4, 5, 6};
 
         // !!! KBA Question to Study!!!
         // The following is about 90% the same thing as the KBA question!
@@ -244,5 +244,24 @@ public class StringExamples {
         // if cirno touhou made java would it be cirno's perfect math class?
 
 
+        // ===== trim =====
+
+        String t = "     abc123      ";
+        // Eric says that the "arrows" (the -> <-) are helpful in pointing out white space
+        System.out.println("->" + t + "<-");
+        System.out.println("->" +t.trim() + "<-"); // the white spaces are gone!
+
+
+
+        // ====== split ======
+        // todo - how to highlight certain comments in intellij??? "todo" seems to have this property
+        String vowels = "a:e:i:o:u";
+
+        // splitting the string on the colon (:) and appends to array
+        String[] result = vowels.split(":");
+
+        for(i = 0; i < result.length; i++){
+            System.out.println(result[i]);
+        }
     }
 }
