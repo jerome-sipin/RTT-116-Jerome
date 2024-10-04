@@ -1,6 +1,7 @@
 package org.perscholas;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
 import java.util.StringJoiner;
 
 public class StringExamples {
@@ -263,5 +264,7 @@ public class StringExamples {
         for(i = 0; i < result.length; i++){
             System.out.println(result[i]);
         }
+
+        System.out.println("result = " + Arrays.toString(result));
     }
 }
