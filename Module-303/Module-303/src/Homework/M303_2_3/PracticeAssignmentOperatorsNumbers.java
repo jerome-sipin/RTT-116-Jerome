@@ -54,7 +54,8 @@ public class PracticeAssignmentOperatorsNumbers {
         System.out.println(Integer.toBinaryString(g)); // 1111110110010
 
         System.out.println("End of Task 2");
-        // Task 3
+
+        // =============== Task 3 ===============
         int h, i, j;
         h = 7;
         i = 17;
@@ -62,19 +63,51 @@ public class PracticeAssignmentOperatorsNumbers {
         //     111
         // & 10001
         //   00001
-        // Prediction - j == 1 (both binary and decimal)
+        // Prediction: j == 1 (both binary and decimal)
         System.out.println(j);
         System.out.println(Integer.toBinaryString(j));
 
         System.out.println("End of Task 3");
 
-        // Task 4
+        // =============== Task 4 ===============
+        //     111
+        // | 10001
+        //   10111
+        // Prediction: decimal 23 | binary 10111
+        j = (h | i);
+        System.out.println(j);
+        System.out.println(Integer.toBinaryString(j));
 
-        // Task 5
+        System.out.println("End of Task 4");
 
-        // Task 6
+        // =============== Task 5 ===============
+        int k = 20;
+        System.out.println("Value of k before increment: " + k);
+        k++;
+        System.out.println("Value of k after increment: " + k);
 
-        // Task 7
+        System.out.println("End of Task 5");
+        // =============== Task 6 ===============
+        int l = 15;
+        System.out.println("Original value of l: " + l);
+        ++l; // first method of incrementing
+        System.out.println("Value of l: " + l);
+        l++;
+        System.out.println("Value of l: " + l);
+        l = l + 1;
+        System.out.println("Value of l: " + l);
+
+        System.out.println("End of Task 6");
+
+        // =============== Task 7 ===============
+        int m, n;
+        m = 5;
+        n = 8;
+        int o = (++m) + n;
+        System.out.println("Value of o: " + o);
+        int p = (m++) + n;
+        System.out.println("Value of p: " + p);
+        System.out.println("End of Task 7");
 
     }
 }
