@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class PAStrings3_SubstringComparisons {
     public static void main(String[] args) {
 
-        //
         String smallest = "";
         String largest = "";
         Scanner scanner = new Scanner(System.in);
@@ -33,7 +32,6 @@ public class PAStrings3_SubstringComparisons {
         // ava
         // welcometojava
         // 0123456789012
-
         int y = (s1.length() - x) + 1; // ends search for substrings x + 1 indices before the word ends.
         String comparedString; // the string we will be comparing this iteration of the loop
         int cValueS; // compareTo smallest

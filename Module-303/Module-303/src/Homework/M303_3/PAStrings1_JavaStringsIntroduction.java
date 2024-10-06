@@ -49,9 +49,6 @@ public class PAStrings1_JavaStringsIntroduction {
         System.out.println("Is A lexicographically greater than B? " + comparison);
         System.out.println("Combination of both strings: " + c);
 
-
-
-
     }
 
 }
