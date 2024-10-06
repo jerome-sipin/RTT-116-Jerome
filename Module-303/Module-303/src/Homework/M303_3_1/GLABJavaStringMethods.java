@@ -87,11 +87,84 @@ public class GLABJavaStringMethods {
         s1 = "Java is fun";
         int r1;
         // getting index of character 's'
-       
+        r1 = s1.indexOf('s');
+        System.out.println(r1); // 6
+        // getting index of character 'J'
+        r1 = s1.lastIndexOf('J');
+        System.out.println(r1); // 0
+        // when a string has multiple occurrences of a letter, the last is returned
+        r1 = s1.lastIndexOf('a');
+        System.out.println(r1); // 3
+        // what happens when a character is no in the string?
+        r1 = s1.lastIndexOf('j');
+        System.out.println(r1); // -1
+        // getting the last occurrence of "ava"
+        r1 = s1.lastIndexOf("ava");
+        System.out.println(r1); // 1
+        // substring not in the string
+        r1 = s1.lastIndexOf("java");
+        System.out.println(r1); // -1
 
+        // contains() methood
+        s1 = "Learn Java";
+        Boolean r;
+        // check if s1 contains "Java";
+        r = s1.contains("Java");
+        System.out.println(r); // true
+        // check if s1 contains "Python"
+        r = s1.contains("Python");
+        System.out.println(r); // false
+        // check if s1 contains ""
+        r = s1.contains("");
+        System.out.println(r); // true
 
+        // replace() method
+        s1 = "abc cba";
 
+        // all occurrences of 'a' is replaced with 'z'
+        System.out.println(s1.replace('a', 'z'));
+        // all occurrences of 'L' is replaced with 'J'
+        System.out.println(s1.replace('L', 'J'));
+        // character not in the string
+        System.out.println("Hello".replace('4', 'J'));
+        // all occurrences of "C++" is replaced with "Java"
+        System.out.println(s1.replace("C++", "Java"));
+        // all occurrences of "aa" is replaced with "zz"
+        System.out.println("aa bb aa zz".replace("aa", "zz"));
+        // substring not in the string
+        System.out.println("Java".replace("C++", "C"));
 
+        // replaceAll() method
+        s1 = "Java123is456fun";
+        // regex for sequence of digits
+        // note the definition of a regex - a string that is to be replaced.
+        // further note, the syntax for this method is string.replaceAll(String regex, String replacement)
+        String regex = "\\d+";
+        // replace all occurrences of numeric digits with a space
+        System.out.println(s1.replaceAll(regex, " "));
 
+        // comparison of strings using the equals() method
+        s1 = "PerScholas";
+        s2 = "PerScholas";
+        String s10 = new String ("PerScholas");
+        s4 = "Teksystem";
+        System.out.println(s1.equals(s2));//true
+        System.out.println(s1.equals(s10));//true
+        System.out.println(s1.equals(s4));//false
+
+        // comparison of strings using the == operator
+        // using the same strings that were defined in the previous section
+        System.out.println(s1==s2); // true, because both refer to the same instance
+        System.out.println(s1==s10);// false, because s10 refers to an instance created in nonpool
+
+        // comparison of string using the compareTo() method
+        s1 = "Perscholas";
+        s2 = "Perscholas";
+        s3 = "Perschola";
+        s4 = "PerscholasX";
+        System.out.println(s1.compareTo(s2)); //0
+        System.out.println(s1.compareTo(s3)); // 1(because s1>s3)
+        System.out.println(s1.compareTo(s4)); // -1(because s1<s4 )
+        
     }
 }
