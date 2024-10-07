@@ -1,6 +1,5 @@
-package Homework.M303_3;
+package Homework.M303_3_GLab_PracticeAssignments;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class PAStrings5_StringTokens {
@@ -20,8 +19,5 @@ public class PAStrings5_StringTokens {
         for(int i = 0; i < result.length; i++){
             System.out.println(result[i]);
         }
-
-
-
     }
 }

@@ -1,4 +1,4 @@
-package Homework.M303_2_2;
+package Homework.M303_2_2_GuidedLab;
 
 public class AutoTypeConversion {
     public static void main(String[] args) {

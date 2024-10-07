@@ -1,8 +1,8 @@
-package Homework.M303_2_1;
+package Homework.M303_2_1_PracticeAssignment_Variables;
 
 import java.text.DecimalFormat;
 
-public class PracticeAssignmentVariables {
+public class PAVariables {
     public static void main(String[] args) {
 
         // Write a program that declares two integer variables, assigns an integer to each, and adds them together.

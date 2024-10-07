@@ -1,4 +1,4 @@
-package Homework.M303_2_3;
+package Homework.M303_2_3_PracticeAssignment;
 
 public class PracticeAssignmentOperatorsNumbers {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Homework.M303_3;
+package Homework.M303_3_GLab_PracticeAssignments;
 
 import java.util.Scanner;
 

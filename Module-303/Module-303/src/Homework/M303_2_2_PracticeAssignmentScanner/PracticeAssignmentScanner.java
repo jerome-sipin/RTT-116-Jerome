@@ -1,4 +1,4 @@
-package Homework.M303_2_2;
+package Homework.M303_2_2_PracticeAssignmentScanner;
 
 import java.util.Scanner;
 

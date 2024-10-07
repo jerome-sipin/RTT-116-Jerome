@@ -1,4 +1,4 @@
-package Homework.M303_2_1;
+package Homework.M303_2_1_GuidedLab;
 
 public class RelationalOperatorsDemo {
     public static void main(String[] args) {
