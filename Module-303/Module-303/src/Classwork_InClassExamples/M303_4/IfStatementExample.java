@@ -1,4 +1,4 @@
-package M303_4;
+package Classwork_InClassExamples.M303_4;
 
 import java.util.Scanner;
 

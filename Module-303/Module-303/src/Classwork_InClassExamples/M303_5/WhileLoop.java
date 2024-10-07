@@ -1,4 +1,4 @@
-package M303_5;
+package Classwork_InClassExamples.M303_5;
 
 public class WhileLoop {
     public static void main(String[] args) {

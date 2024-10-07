@@ -1,4 +1,4 @@
-package M303_6;
+package Classwork_InClassExamples.M303_6;
 
 import java.util.Arrays;
 

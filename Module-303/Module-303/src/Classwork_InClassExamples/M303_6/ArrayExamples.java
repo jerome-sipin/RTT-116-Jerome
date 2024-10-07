@@ -1,4 +1,4 @@
-package M303_6;
+package Classwork_InClassExamples.M303_6;
 
 public class ArrayExamples {
     public static void main(String[] args) {

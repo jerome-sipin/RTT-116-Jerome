@@ -1,4 +1,4 @@
-package org.perscholas;
+package Classwork_InClassExamples.perscholas;
 
 public class WrapperClassesExample {
 
