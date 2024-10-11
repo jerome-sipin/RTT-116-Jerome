@@ -72,7 +72,7 @@ public class CoffeeShop {
         scanner.nextLine();
 
         // we want to check that the user has entered a valid product number
-        if ( selection >= & selection <= products.size() ) {
+        if ( selection >= 0 && selection <= products.size() ) {
 
             // 3 add to the cart array
             // we are subtracting 1 from the user input to get the real position in the array
