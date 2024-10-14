@@ -121,7 +121,7 @@ public class StringExamples {
 
         // The StringBuffer is mutable, meaning that the internal content of the StringBuffer can be
         // changed and it is good to use when doing lots of string manipulation in a  high-volume system
-        // Extra reading that shouuld probably be done - compare the StringBuffer to the StringBuilder
+        // Extra reading that should probably be done - compare the StringBuffer to the StringBuilder
         // They are very similar.
         // Potential interview question - why would you use a StringBuffer or a StringBuilder over a regular String?
         // Answer - for memory management! Strings are immutable and the JVM creates new Strings in memory and then has

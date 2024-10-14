@@ -31,5 +31,10 @@ public class Runner {
         t.setBase(10);
         t.setHeight(20);
         t.setName("Triangle");
+
+
+        Shape s10 = new Circle(); // valid
+        //Circle c10 = new Shape(); // not valid
+
     }
 }
