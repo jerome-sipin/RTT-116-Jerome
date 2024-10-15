@@ -17,6 +17,8 @@ public class CoffeeShop {
     // this will hold the products that the user will purchase
     private List<Product> cart = new ArrayList<>();
 
+
+
     private void initProducts() {
         Product p1 = new Product("Small Coffee", 4.57, 0);
         products.add(p1);
@@ -78,8 +80,12 @@ public class CoffeeShop {
             // we are subtracting 1 from the user input to get the real position in the array
             // because most people do not have a concept of the 0th item in a list
             Product p = products.get(selection - 1);
-            cart.add(p);
-            System.out.println("Added " + p.getName() + " to your cart");
+            System.out.print("How many would you like to add? ");
+            int quantity = scanner.nextInt();
+            for ( int i = 0 ; i < quantity ; i++ ) {
+                cart.add(p);
+            }
+            System.out.println("Added " + quantity + p.getName() + "s to your cart");
             System.out.println("\n");
         }
         else {
