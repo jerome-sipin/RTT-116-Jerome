@@ -80,6 +80,7 @@ public class CoffeeShop {
             // we are subtracting 1 from the user input to get the real position in the array
             // because most people do not have a concept of the 0th item in a list
             Product p = products.get(selection - 1);
+            // Ask how many items of this type the user wants to add. Use another loop to add x number of items to cart.
             System.out.print("How many would you like to add? ");
             int quantity = scanner.nextInt();
             for ( int i = 0 ; i < quantity ; i++ ) {
