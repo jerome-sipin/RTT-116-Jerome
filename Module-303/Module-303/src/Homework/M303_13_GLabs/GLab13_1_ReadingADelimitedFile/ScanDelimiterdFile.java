@@ -1,4 +1,4 @@
-package Homework.M303_13_GLabs;
+package Homework.M303_13_GLabs.GLab13_1_ReadingADelimitedFile;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,7 +12,7 @@ public class ScanDelimiterdFile {
     public static void main(String[] args) throws FileNotFoundException {
 
         try {
-            String location = "E:\\Development\\RTT-116-Classwork\\Module-303\\Module-303\\src\\Homework\\M303_13_GLabs\\cars.csv";
+            String location = "E:\\Development\\RTT-116-Classwork\\Module-303\\Module-303\\src\\Homework\\M303_13_GLabs\\GLab13_1_ReadingADelimitedFile\\cars.csv";
             File file = new File(location);
             Scanner input = new Scanner(file);
             ArrayList<String[]> data = new ArrayList<String[]>();
