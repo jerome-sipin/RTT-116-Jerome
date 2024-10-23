@@ -33,4 +33,9 @@ public class Circle extends Shape {
     public double calculatePerimeter() {
         return (2 * Math.PI * radius);
     }
+
+    @Override
+    public double CalculateArea() {
+        return 0;
+    }
 }

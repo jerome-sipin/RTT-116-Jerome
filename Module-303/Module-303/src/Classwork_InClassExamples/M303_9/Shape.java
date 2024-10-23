@@ -20,4 +20,5 @@ public abstract class Shape implements AreaCalculation{
         this.name = name;
     }
 
+    public abstract double CalculateArea();
 }

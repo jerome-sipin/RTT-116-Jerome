@@ -17,8 +17,6 @@ public class CoffeeShop {
     // this will hold the products that the user will purchase
     private List<Product> cart = new ArrayList<>();
 
-
-
     private void initProducts() {
         Product p1 = new Product("Small Coffee", 4.57, 0);
         products.add(p1);
@@ -31,6 +29,47 @@ public class CoffeeShop {
 
         Product p4 = new Product("Egg Sandwich", 6.49, 0);
         products.add(p4);
+
+
+        // TODO - Homework #1 - write this function using a for loop
+        // use a bubble sort algorithm - look this up on google
+        // sort the list of products by price using 2 nested for loops to implement a bubble sort in a function
+        // should create a function that will tke in a List<Product> to be sorted and return a sorted List<Product>
+
+        // bubble sort
+        boolean swapped;
+        for (int i = 0 ; i < products.size() -1 ; i++) {
+            swapped = false;
+            double temp;
+            String temp2;
+            for ( int j = 0 ; j < products.size() - i - 1 ; j++) {
+                if (products.get(j).getPrice() > products.get(j + 1).getPrice()) {
+                    temp = products.get(j).getPrice();
+                    temp2 = products.get(j).getName();
+                    products.get(j).setPrice(products.get(j + 1).getPrice());
+                    products.get(j).setName(products.get(j + 1).getName());
+                    products.get(j + 1).setPrice(temp);
+                    products.get(j + 1).setName(temp2);
+                    swapped = true;
+                }
+            }
+            if (swapped == false){
+                break;
+            }
+            products.forEach(System.out::println);
+        }
+
+        // sort using list built-in methods
+        // let's sort the list by price
+        // stream will not modify the original list that you streamed
+        //List<Product> sorted = products.stream().sorted(Comparator.comparing(Product::getPrice)).toList();
+
+        // this will modify the original list... using stream will not modify the original list
+        //products.sort(Comparator.comparing(Product::getPrice).thenComparing(Product::getName));
+
+        // this just prints the products when we run this we will have to make a fix
+        //sorted.forEach(p-> System.out.println(p));
+
     }
 
     private void printProductMenu() {
@@ -45,9 +84,10 @@ public class CoffeeShop {
 
     private int printMainMenu() throws InvalidInputException {
         System.out.println("1) See product menu");
-        System.out.println("2) Purchase product");
-        System.out.println("3) Checkout");
-        System.out.println("4) Exit");
+        System.out.println("2) Search for product");
+        System.out.println("3) Purchase product");
+        System.out.println("4) Checkout");
+        System.out.println("5) Exit");
 
        return readNumberFromUser("\n Enter selection:");
     }
@@ -73,6 +113,25 @@ public class CoffeeShop {
             // next time this function is called
             scanner.nextLine();
         }
+    }
+
+    // TODO - Homework #2 - create a new main menu option that allows you to search the list of products for a user entered name
+    // 1) Ask the user to enter a search phrase "coffee"
+    // 2) filter the list of products to show only the products that the match the phrase entered
+    // 2b - do not alter the original list of products which means use the .stream()
+    // 2c - use a lambda to print out the sorted list using a product.toString() method
+    // 2c p1 - create a toString method on your product object
+    // 3) Add the search capability to the main menu when you start the coffee shop as a new option
+    public void searchProduct() {
+        System.out.print("Enter a product name to search for: ");
+        String search = scanner.nextLine().toLowerCase();
+
+        // this line of code filters the list of products based if the search input is in the string
+        List<Product> results = products.stream().filter(p -> p.getName().toLowerCase().contains(search)).toList();
+
+        // print the result list using a lambda
+        results.forEach(p -> System.out.println(p));
+        System.out.println("\n");
     }
 
     public void addProductToCart() throws InvalidInputException {
@@ -141,13 +200,16 @@ public class CoffeeShop {
 
             if (selection == 1) {
                 printProductMenu();
-            } else if (selection == 2) {
+            } else if ( selection == 2) {
+                // filter by user input
+                searchProduct();
+            } else if (selection == 3) {
                 // purchase product / add to cart
                 addProductToCart();
-            } else if (selection == 3) {
+            } else if (selection == 4) {
                 // checkout
                 checkout();
-            } else if (selection == 4) {
+            } else if (selection == 5) {
                 // exit
                 // we are exiting with a value of 0 means successful exit
                 System.out.println("Goodbye!");

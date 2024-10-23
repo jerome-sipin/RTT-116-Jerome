@@ -19,6 +19,25 @@ public class CalcRunner {
         t.setBase(10.0);
         t.setName("Triangle");
 
+//        Shape sq = new Shape(){
+//
+//            @Override
+//            public double calculateArea() {
+//                return 0;
+//            }
+//
+//            @Override
+//            public double calculatePerimeter() {
+//                return 0;
+//            }
+//
+//            @Override
+//            public double CalculateArea(){
+//               return 0;
+//           }
+//        };
+
+
         // make a list of shapes bt notice that we are using the parent class shape
         List<Shape> shapes = new ArrayList<Shape>();
         shapes.add(c);

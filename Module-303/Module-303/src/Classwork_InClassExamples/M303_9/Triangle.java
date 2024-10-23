@@ -37,4 +37,9 @@ public class Triangle extends Shape {
     public double calculatePerimeter() {
         return 2 * base * height;
     }
+
+    @Override
+    public double CalculateArea() {
+        return 0;
+    }
 }
