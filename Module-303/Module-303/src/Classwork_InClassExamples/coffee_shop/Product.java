@@ -2,6 +2,10 @@ package Classwork_InClassExamples.coffee_shop;
 
 public class Product {
 
+    public Product(){
+        // no arguments constructor
+    }
+
     private String name;
     private double price;
     private int quantity;

@@ -1,5 +1,7 @@
 package Classwork_InClassExamples.M303_9;
 
+import java.text.DecimalFormat;
+
 public class Runner {
 
     public static void main ( String[] args ) {
@@ -35,6 +37,8 @@ public class Runner {
 
         Shape s10 = new Circle(); // valid
         //Circle c10 = new Shape(); // not valid
+
+        DecimalFormat df = new DecimalFormat("#.00");
 
     }
 }

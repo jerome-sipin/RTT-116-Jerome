@@ -30,6 +30,10 @@ public class CoffeeShop {
         Product p4 = new Product("Egg Sandwich", 6.49, 0);
         products.add(p4);
 
+        // load products fromm the file
+        List<Product> loaded = new ProductLoader().loadProducts();
+        products.addAll(loaded);
+
 
         // TODO - Homework #1 - write this function using a for loop
         // use a bubble sort algorithm - look this up on google
@@ -88,6 +92,9 @@ public class CoffeeShop {
         System.out.println("3) Purchase product");
         System.out.println("4) Checkout");
         System.out.println("5) Exit");
+        if ( !cart.isEmpty() ) {
+            System.out.println("6) Remove product from cart");
+        }
 
        return readNumberFromUser("\n Enter selection:");
     }
@@ -188,6 +195,25 @@ public class CoffeeShop {
         System.out.println("\n");
     }
 
+    public void removeProduct(){
+        // Print items currently in cart
+        for ( int count = 0 ; count < cart.size() ; count++ ) {
+            Product p = cart.get(count);
+            System.out.println((count+1) + ") " + p.getName() + "\t" + p.getPrice());
+        }
+
+        // Prompt user to select which they want to remove
+        System.out.println("Select item to remove: ");
+        int x = scanner.nextInt();
+        x = x - 1;
+        String deletedItem = cart.get(x).getName();
+
+        // Remove item from cart
+        cart.remove(x);
+        System.out.println("Removed " + deletedItem + " from your cart\n");
+
+    }
+
     public void start() throws InvalidInputException {
         // this becomes similar to the main method in that it will be where our project starts and runs
         // 1) initialize the products for sale
@@ -214,6 +240,8 @@ public class CoffeeShop {
                 // we are exiting with a value of 0 means successful exit
                 System.out.println("Goodbye!");
                 System.exit(0);
+            } else if (selection == 6 && !cart.isEmpty()) {
+                removeProduct();
             }
             else{
                 System.out.println("Invalid selection" + "\n");
