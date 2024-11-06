@@ -1,0 +1,140 @@
+-- Question 2) The Curriculum Planning Committee is attempting to fill in gaps in the current course offerings. You need to provide them 
+-- with a query which lists EACH DEPARTMENT and the NUMBER OF COURSES OFFERED BY THAT DEPARTMENT.
+-- The output should be sorted by the NUMBER OF COURSES in ASCENDING ORDER, then by DEPARTMENT NAME in ASCENDING ORDER
+SELECT d.name, count(c.id) as course_count
+FROM department d, course c
+WHERE d.id = c.deptId
+GROUP BY d.name
+ORDER BY course_count, name ASC;
+
+-- Question 3) The recruiting department needs to know which courses are most popular with students. Provide a query which 
+-- lists the name of each course and the nmber of students in that course.
+-- The output should be sorted by the NUMBER OF STUDENTS in DESC order, then by COURSE NAME in ASC order.
+SELECT c.name, COUNT(sc.courseId) as student_count
+FROM course c, studentcourse sc 
+WHERE c.id = sc.courseId
+GROUP BY c.name
+ORDER BY student_count DESC, c.name;
+
+-- COME BACK TO LATER!!!!!!!!!!!!!!!!!!
+-- Question 4) Quite a few students have been complaining that the professors are absent from some of their courses.
+-- Write a query to list the names of all COURSES where the number of faculty assigned to those courses is zero
+-- The output should be sorted by the course name in ascending alphabetical order
+SELECT c.name
+FROM course c
+LEFT JOIN facultycourse fc
+ON c.id = fc.courseId
+WHERE fc.facultyId IS NULL;
+
+-- Question 5) Quite a few students have been complaining that the prfesors are absent from some of their courses.
+-- Write a quer to list the COURSE NAMES and the NUMBER OF STUDENTS in those courses foor all courses
+-- where there are no assigned faculty
+-- the output should be sorted first by NUMBER OF STUDENTS in DESC, then by COURSE NAME in ASC
+SELECT c.name, COUNT(sc.studentId) as student_count
+FROM course c
+LEFT JOIN facultycourse fc
+ON c.id = fc.courseId
+LEFT JOIN studentcourse sc
+ON sc.courseId = c.id
+WHERE fc.facultyId IS NULL
+GROUP BY c.name
+ORDER BY student_count DESC, c.name ASC;
+
+-- Question 6) Write a query that lists the TOTAL NUMBER OF STUDENTS that were enrolled in classes during EACH SCHOOL YEAR
+-- The first column should have the HEADER "STUDENTS". Provide a second "YEAR" COLUMN SHOWING THE ENROLLMENT YEAR
+-- The output should be sorted first by SCHOOL YEAR in ASC, then by TOTAL NUMBER OF STUDENTS in DESC
+SELECT COUNT(DISTINCT sc.studentId) as Students, YEAR(sc.startDate) as Year
+FROM studentcourse sc
+GROUP BY YEAR(sc.startDate)
+ORDER BY YEAR ASC, STUDENTS DESC;
+
+-- Question 7) Write a query that lists the start date and total number of students who enrolled in classes in August of each year
+-- The output should be ordered first by start date in asc, then by total number of students in asc
+SELECT COUNT(DISTINCT sc.studentId) as Students, YEAR(sc.startDate) as Year 
+FROM studentcourse sc
+WHERE MONTH(sc.startDate) = 8
+GROUP BY YEAR(sc.startDate)
+ORDER BY YEAR ASC, STUDENTS DESC;
+-- we definitely need to ask a question for this. What column title is hackerrank asking for??
+-- needs distinct
+
+
+-- Question 8) Write a query to list students' First Name, Last Name, and the NUmber of Courses they are taking in their major department.
+-- The output should be sorted first by the NUmber of Courses in DESC, then by First Name in ASC, then by Last Name in ASC
+select s.firstname, s.lastname, count(*) as course_count
+from student s
+left join studentcourse sc
+on s.id = sc.studentId
+left join course c
+on c.id = sc.courseId
+where c.deptId = s.majorId
+group by s.id
+order by course_count desc, s.firstname asc, s.lastname asc;    
+    
+
+-- Quuestion 9) Write a query to list First Name, Last Name, and Average Progress of all students achieving average progress of less 
+-- than 50%. The Average Progress displayed should be rounded to one decimal place.
+-- The output should be sorted first by Average Progress in DESC, then by First Name in ASC, then by the Last Name in ASC. 
+select s.firstname, s.lastname, round(avg(sc.progress), 1) as average
+from student s, studentcourse sc
+where s.id = sc.studentId
+group by s.id
+having average < 50
+order by average desc, s.firstname asc, s.lastname asc;
+
+-- Question 10) Write a query to list each Course Name and the Average Progress of students in that course. 
+-- The Average Progress displayed shouuld be rounded to one decimal place
+-- The output should be sorted first by Average Progress in DSC, then by COurse Name in ASC
+select c.name, round(avg(sc.progress), 1) as average
+from studentcourse sc 
+left join course c
+on c.id = sc.courseId
+group by c.id
+order by average desc, c.name asc;
+
+
+-- Question 11) Write a query that shows the COurse Name and the Average Student Progress of the Course with the highest Average Progress
+-- in the syystem
+-- THe Average Progress displayed should be rounded to one decimal place
+select c.name, round(avg(sc.progress), 1) as average
+from studentcourse sc 
+left join course c
+on c.id = sc.courseId
+group by c.id
+order by average desc, c.name asc
+limit 1;
+
+-- Question 12) Write a query that outputs the faculty First Name, Last Name, and Average Progress made over all of their courses
+-- The Average Progress displayed should be rounded to one decimal place
+-- The output should be sorted by Average Progress in DESC, then by First Name in ASC< then by Last Name in ASC. 
+select f.firstname, f.lastname, round(avg(sc.progress), 1) as average
+from faculty f
+left join facultycourse fc
+on fc.facultyId = f.id
+left join course c
+on c.id = fc.courseId
+left join studentcourse sc
+on sc.courseId = c.id
+group by f.id
+order by average desc, f.firstname asc, f.lastname asc;
+
+
+-- Question 13) Write a query that displayes each student's First Name, Last Name, Min Grade based on their minimum progress, and Max
+-- Grade based on their maximum progress
+-- The output should be sorted by Minimum Grade in DESC, then by Maximum Grade in DESC, then by First Name in ASC< then by Last 
+-- Name in ASC.
+select s.firstname, s.lastname, min(sc.progress) as minimum, max(sc.progress) as maximum
+from student s
+left join studentcourse sc
+on sc.studentId = s.id
+group by s.id
+order by minimum desc, maximum desc, s.firstname asc, s.lastname asc;
+
+
+
+
+
+
+
+
+
