@@ -10,26 +10,36 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class OrderDetails {
+public class OrderDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
-    @Column(name = "order_id")
-    private String orderId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "order_id", nullable = false)
+    @ToString.Exclude
+    private Order order;
 
-    @Column(name = "product_id")
-    private String productId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "product_id", nullable = false)
+    @ToString.Exclude
+    private Product product;
+
+    @Column(name = "order_id", insertable = false, updatable = false)
+    private Integer orderId;
+
+    @Column(name = "product_id", insertable = false, updatable = false)
+    private Integer productId;
 
     @Column(name = "quantity_ordered")
-    private String quantityOrdered;
+    private Integer quantityOrdered;
 
-    @Column(name = "price_each")
+    @Column(name = "price_each", columnDefinition = "DECIMAL")
     private Double priceEach;
 
-    @Column(name = "order_line_number")
+    @Column(name = "order_line_number", columnDefinition = "SMALLINT")
     private Integer orderLineNumber;
 
 }

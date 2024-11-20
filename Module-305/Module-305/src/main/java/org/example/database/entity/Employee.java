@@ -1,18 +1,33 @@
 package org.example.database.entity;
 
 import jakarta.persistence.*;
+import lombok.ToString;
+import org.hibernate.query.Page;
+
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "employees")
 public class Employee {
 
+    // To add a one to many relationship steps
+    // 1) Goto the example website and create the @OneToMany and @ManyToOne annoations
+    // 2) In the entity with the foreign key mark that colum as insertable = false and updateable = false
+    // 3) Add the @ToString.Exclude annotation to both sides
+
+
     // the @Id annotation tells hibernate that this is the primary key for this entity
     @Id
-    // this tells hibernate that the databse will auto increment the new Id for a new record in the db
+    // this tells hibernate that the database will auto increment the new Id for a new record in the database
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // this defines the database column
     @Column(name = "id")
-    private int id;
+    private Integer id;
+
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<Customer> customers;
 
     @Column(name = "office_id")
     private int officeId;
@@ -41,7 +56,9 @@ public class Employee {
     @Column(name = "profile_image_url")
     private String profileImageUrl;
 
+
     public Employee() {
+
     }
 
     public Employee(int id, int officeId, String lastname, String firstname, String extension, String email, int reportsTo, String jobTitle, int vacationHours, String profileImageUrl) {
@@ -135,6 +152,14 @@ public class Employee {
 
     public void setProfileImageUrl(String profileImageUrl) {
         this.profileImageUrl = profileImageUrl;
+    }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
     }
 
     @Override
