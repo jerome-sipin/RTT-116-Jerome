@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- typically you import your style sheet here in the head. however, it can go anywhere in the
+     document. we do it here for Search Engine Optimiziation (SEO) and reduce time to first 
+     reader of page.-->
+    <link rel="stylesheet" href="pub/css/external.css">
+</head>
+
+<!-- we got this snippet of code from Google-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<!-- a best practice is to have a global.css sheet that is used on all pages of the website. 
+ put stuff in there that goes for all pages. then on each individual page youu either put the
+ styling internal to the page OR you create an external CSS file for that page.. however, [Eric's] preference
+ is to put the css internal to the page so it is easier to read and find.-->
+
+<body>
+    <!-- this is what is called internal styling-->
+     <!-- this is an html comment. it is different than a css comment-->
+    <style>
+        /* this will apply the css properties to all p and span tags in the document */
+        /* this is a css comment. it is different than an html comment */
+        p, span {
+            color: red;
+            background-color: beige;
+            font-weight: 400;
+            font-size: 30px;
+            font-family: "Noto Sans", sans-serif;
+        }
+
+        /* all custom classes in CSS begin with a '.'*/
+        .customclass{
+            color: blue;
+            margin: 10px ; /* this will apply to all 4 sides*/ 
+            margin: 10px, 10px, 10px, 10px; /* top, right, bottom, left*/
+            padding-bottom: 15px; 
+            padding-left: 10px;
+            padding-right: 20px;
+            border-top: 1px solid black;
+            background-color: bisque;
+        }
+
+        .pseudo{
+            /*thiis class is applied when the mouse is not over the element*/
+            background-color: brown;
+        }
+
+        .pseudo:hover{
+            /* this is applied only when the mouse is over the tag */
+            background-color: blue;
+        }
+
+        .pseudo:active {
+            /* this is applied only when the mouse is clicked on the tag */
+            background-color: chartreuse;
+        }
+
+        #anything{
+            background-color: aliceblue;
+        }
+    </style>
+    <p>this has some text in it.</p>
+
+    <p>this is paragraph 2</p>
+
+    <p>this is paragraph 3</p>
+
+    <!-- this is inline styling where we use the style attribute on the html tag itself. 
+     this styling has the highest precedence and will overwrite internal 
+     and external CSS-->
+    <p style="color: black">this is paragraph 3</p>
+
+    <!-- we are using the class attribute to apply a CSS class
+     which is defined above as .customclass-->
+    <div class="customclass">this is p4</div>
+    <div class="customclass">this is p5</div>
+
+    <div id="anything">This is mroe text with an id on the div</div>
+
+    <div class="defined-external">this is defined in external css</div>
+
+    <div class="pseudo">pingas</div>
+
+    <span>this is a span</span>
+
+    <span> this is now the last child</span>
+
+    <!-- this is good to know that you can hide an element from being displayed 
+     using css-->
+    <div style="display:none">this will not display</div>
+
+</body>
+</html>

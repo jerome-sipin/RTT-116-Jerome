@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // !!!! best practice is to always use let when defining variables and only 
+        // use var when you know you need it globally avalable to the document.
+        // you have to have a reason why it should be global. 
+
+        // var becomes a global variables accessable by any fnction 
+        // in the document
+        var a = 10;
+        var b = "String";
+        var c = true;
+
+        function abc(){
+            // let scope this variable to the containing {}
+            let x  = 10;
+            var y = 20;
+        }
+
+        // x is not available here because it is confined inside the above function
+        // y IS available here because it was defined as a var, which is globally 
+        // available to the document
+
+        abc();
+
+        console.log("hello world");
+
+    </script>
+    <h1>Javascript basics</h1>
+</body>
+</html>
