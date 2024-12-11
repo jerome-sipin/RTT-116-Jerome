@@ -10,7 +10,13 @@
 
     <form>
         <div>
-            First Name <input type="text" required>
+            Phone <input type="text" 
+            name="phone"
+            pattern="\d{4}">
+        </div>
+
+        <div>
+            First Name <input type="text" required minlength="3" maxlength="5">
         </div>
         <div>
             Last Name <input type="text" required>
@@ -18,7 +24,13 @@
         <div>
             Email <input type="email" required>
         </div>
+        <div>
+            Age <input type="number" min="100" max="1000">
+        </div>
+       
+
         <button type="submit">Submit</button>
+        <button>Cancel</button>
     </form>
 </body>
 </html>

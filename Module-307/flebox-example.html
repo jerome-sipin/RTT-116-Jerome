@@ -6,15 +6,21 @@
 
 
     <style>
-        .container{
+        .container {
+            /* this turns on flex for the container */
+            /* the container is simply a div box that the elements will be inside of */
             display: flex;
-            /* justify content is for horizontal alignment*/
-            justify-content: start;
-            /* align items is for vertica alignment */
+            /* this is for hoizontal alignment */
+            justify-content: space-between;
+            /* this is for vertical alignment */
             align-items: center;
+            /* this makes the items horizontal or vertical */
             flex-direction: row;
-            flex-wrap: wrap;
-            height: 300px;
+            /* allow the elements to wrap to the next row or not */
+            flex-wrap:wrap;
+
+
+            height:300px;
         }
         .boxes{
             border: .1px solid;
@@ -69,6 +75,27 @@
     <div class="boxes" id="box6">6</div>
     <div class="boxes" id="box7">7</div>
     <div class="boxes" id="box8">8</div>
+    
+    <a href="/bootstrap.html">click for bootstrap example</a>
+
+    <!-- these 2 are cards but a card is really just 
+      a container that we put an image and some text in
+      these cards will follow the same flexbox rules
+      and everything inside the card will move when the 
+      card container is positioned by the flex box -->
+    <div class="card-body">
+        <div class="img-container">
+          <img src="/images/image-example.svg" alt="">
+        </div>
+        <h1>Heading</h1>
+        <p>Lorem ipsum ..</p>
+    </div>
+    <div class="card-body">
+        <div class="img-container">
+          <img src="/images/image-example.svg" alt="">
+        </div>
+        <h1>Heading</h1>
+        <p>Lorem ipsum ..</p>
 </div>
 
 </body>
