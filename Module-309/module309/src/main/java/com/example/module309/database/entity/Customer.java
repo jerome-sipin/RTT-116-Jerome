@@ -11,7 +11,7 @@ import java.awt.print.Book;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
+//@ToString
 public class Customer {
 
     // To add a one to many relationship steps
@@ -72,4 +72,22 @@ public class Customer {
     @Column(name = "credit_limit", columnDefinition = "DECIMAL")
     private Double creditLimit;
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", salesRepEmployeeId=" + salesRepEmployeeId +
+                ", customerName='" + customerName + '\'' +
+                ", contactLastname='" + contactLastname + '\'' +
+                ", contactFirstname='" + contactFirstname + '\'' +
+                ", phone='" + phone + '\'' +
+                ", addressLine1='" + addressLine1 + '\'' +
+                ", addressLine2='" + addressLine2 + '\'' +
+                ", state='" + state + '\'' +
+                ", city='" + city + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", country='" + country + '\'' +
+                ", creditLimit=" + creditLimit +
+                '}';
+    }
 }
