@@ -9,7 +9,9 @@ import java.util.List;
 
 public interface EmployeeDAO extends JpaRepository<Employee, Long> {
 
-    @Query("select e from Employee e where e.id = :id")
-    List<Employee> findByEmployeeId(Long id);
+    Employee findById(Integer id);
+
+    @Query("select e from Employee e where e.firstname = :firstName")
+    List<Employee> findByFirstName(String firstName);
 
 }

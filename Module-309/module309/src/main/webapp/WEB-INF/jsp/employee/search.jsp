@@ -28,7 +28,7 @@
 <%--                        <label for="firstNameId" class="form-label">First Name</label>--%>
 <%--                        <input type="text" class="form-control" id="firstNameId" name="firstName" value="${search}">--%>
                         <label for="employeeId" class="form-label">Employee ID</label>
-                        <input type="text" class="form-control" id="employeeId" name="employeeId" value="${search}">
+                        <input type="number" class="form-control" id="employeeId" name="employeeId" value="${search}">
                     </div>
                 </div>
             </div>

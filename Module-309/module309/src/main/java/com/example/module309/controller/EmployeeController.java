@@ -19,7 +19,7 @@ public class EmployeeController {
     private EmployeeDAO employeeDao;
 
     @GetMapping("/employee/search")
-    public ModelAndView search(@RequestParam(required = false) Long id){
+    public ModelAndView search(@RequestParam(required = false) Integer id){
         ModelAndView response = new ModelAndView();
 
         response.setViewName("employee/search");
@@ -27,11 +27,30 @@ public class EmployeeController {
         response.addObject("search", id);
 
         if (id != null) {
-            List<Employee> employees = employeeDao.findByEmployeeId(id);
-            response.addObject("employeesKey", employees);
+            Employee employee = employeeDao.findById(id);
+            response.addObject("employeesKey", employee);
         }
 
+        System.out.println(response);
         return response;
     }
+
+//    @GetMapping("/customer/search")
+//    public ModelAndView search(@RequestParam(required = false) String firstName) {
+//        ModelAndView response = new ModelAndView();
+//
+//        // /WEB-INF/jsp/customer/search.jsp
+//        response.setViewName("customer/search");
+//
+//        // add the search field to the model so we can use it on the jsp page
+//        response.addObject("search", firstName);
+//
+//        if ( firstName != null ) {
+//            List<Employee> employees = employeeDao.findByFirstName(firstName);
+//            response.addObject("customersKey", employees);
+//        }
+//        System.out.println(response);
+//        return response;
+//    }
 
 }
