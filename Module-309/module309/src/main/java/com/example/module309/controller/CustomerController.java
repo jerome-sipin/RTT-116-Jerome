@@ -5,6 +5,9 @@ import com.example.module309.database.dao.EmployeeDAO;
 import com.example.module309.database.entity.Customer;
 import com.example.module309.database.entity.Employee;
 import com.example.module309.form.CreateCustomerFormBean;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +16,24 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+// severity of the error message increases going down
+// as developers, 90% of the time we are going to use DEBUG
+// TRACE    -- this is very low level and not often used by s... it is more for creators of libraries
+// DEBUG    -- this is what we use most of the time when we want to print out stuff that helps us build
+// INFO     -- this is for information that is important like the messages that spring print when it starts up
+// WARN     -- this is a potential problem or something of not, but it is not an error.
+// ERROR    -- this is for errors like making an api call that failed OR if an exception is thrown
+
+
+// slf4j is not an implementation of logging, it is a specification.
+// most if not all other logging libraries have come to use this specification for their implementation.
+// log4j was the most popular logging library for a long time and you will probably encounter it
+@Slf4j
 @Controller
 public class CustomerController {
+
+    // this is the old style logging before lombok and there is a very good chance you will see this in code somewhere
+    private static final Logger LOG = LoggerFactory.getLogger(CustomerController.class);
 
     @Autowired
     private CustomerDAO customerDao;
@@ -57,7 +76,9 @@ public class CustomerController {
 
         response.setViewName("customer/create");
 
-        System.out.println(form);
+        LOG.debug(form.toString());
+
+        //System.out.println(form);
 
         Customer customer = new Customer();
         customer.setCustomerName(form.getCompanyName());
