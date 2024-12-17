@@ -6,11 +6,12 @@ import lombok.*;
 import java.awt.print.Book;
 
 @Entity
-@Table(name = "customers")
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "customers")
 //@ToString
 public class Customer {
 
