@@ -44,7 +44,7 @@
 <c:if test="${not empty search}">
     <section class="bg-light2 pt-5 pb-5">
         <div class="container">
-            <h2 class="text-center">Employees Found (${employeesKey.size()})</h2>
+            <h2 class="text-center">Employees Found (${employeesKey})</h2>
 
             <table class="table mt-5">
                 <tr>

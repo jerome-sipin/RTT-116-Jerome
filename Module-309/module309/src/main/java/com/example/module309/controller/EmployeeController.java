@@ -4,6 +4,7 @@ import com.example.module309.database.dao.CustomerDAO;
 import com.example.module309.database.dao.EmployeeDAO;
 import com.example.module309.database.entity.Customer;
 import com.example.module309.database.entity.Employee;
+import com.example.module309.form.CreateEmployeeFormBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,5 +53,34 @@ public class EmployeeController {
 //        System.out.println(response);
 //        return response;
 //    }
+
+    @GetMapping("/employee/create")
+    public ModelAndView create(){
+        ModelAndView response = new ModelAndView();
+
+        response.setViewName("employee/create");
+
+        return response;
+    }
+
+    @GetMapping("/employee/createEmployee")
+    public ModelAndView createEmployeeSubmit(CreateEmployeeFormBean form){
+        ModelAndView response = new ModelAndView();
+        response.setViewName("employee/createEmployee");
+        System.out.println(form);
+
+        Employee employee = new Employee();
+        employee.setId(form.getId());
+        employee.setOfficeId(form.getOfficeId());
+        employee.setFirstname(form.getFirstName());
+        employee.setLastname(form.getLastName());
+        employee.setExtension(form.getExtension());
+        employee.setEmail(form.getEmail());
+        employee.setJobTitle(form.getJobTitle());
+
+        employeeDao.save(employee);
+
+        return response;
+    }
 
 }
