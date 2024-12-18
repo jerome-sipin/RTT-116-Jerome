@@ -69,6 +69,11 @@ public class CustomerController {
     @GetMapping("/customer/create")
     public ModelAndView create() {
         ModelAndView response = new ModelAndView();
+
+        List<Employee> employees = employeeDao.findAll();
+        response.addObject("employeesKey", employees);
+
+
         response.setViewName("customer/create");
 
 
@@ -95,8 +100,13 @@ public class CustomerController {
         form.setPhone(customer.getPhone());
         form.setCity(customer.getCity());
         form.setCountry(customer.getCountry());
+        form.setEmployeeId(customer.getSalesRepEmployeeId());
 
         response.addObject("form", form);
+
+        List<Employee> employees = employeeDao.findAll();
+        response.addObject("employeesKey", employees);
+
 
         return response;
     }
@@ -117,6 +127,9 @@ public class CustomerController {
             response.setViewName("customer/create");
             response.addObject("bindingResult", bindingResult);
             response.addObject("form", form);
+
+            List<Employee> employees = employeeDao.findAll();
+            response.addObject("employeesKey", employees);
         } else {
             // when this is a create the id in the form will be null
             // when it is an edit the id in the form will be populated with the PK to edit
@@ -136,7 +149,7 @@ public class CustomerController {
             customer.setCity(form.getCity());
             customer.setCountry(form.getCountry());
 
-            Employee employee = employeeDao.findById(1056);
+            Employee employee = employeeDao.findById(form.getEmployeeId());
             customer.setEmployee(employee);
 
             customerDao.save(customer);

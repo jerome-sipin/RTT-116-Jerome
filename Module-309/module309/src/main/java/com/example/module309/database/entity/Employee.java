@@ -45,13 +45,13 @@ public class Employee {
     private String email;
 
     @Column(name = "reports_to")
-    private int reportsTo;
+    private Integer reportsTo;
 
     @Column(name = "job_title")
     private String jobTitle;
 
     @Column(name = "vacation_hours")
-    private int vacationHours;
+    private Integer vacationHours;
 
     @Column(name = "profile_image_url")
     private String profileImageUrl;
@@ -61,7 +61,7 @@ public class Employee {
 
     }
 
-    public Employee(int id, int officeId, String lastname, String firstname, String extension, String email, int reportsTo, String jobTitle, int vacationHours, String profileImageUrl) {
+    public Employee(int id, int officeId, String lastname, String firstname, String extension, String email, Integer reportsTo, String jobTitle, Integer vacationHours, String profileImageUrl) {
         this.id = id;
         this.officeId = officeId;
         this.lastname = lastname;
@@ -122,11 +122,11 @@ public class Employee {
         this.email = email;
     }
 
-    public int getReportsTo() {
+    public Integer getReportsTo() {
         return reportsTo;
     }
 
-    public void setReportsTo(int reportsTo) {
+    public void setReportsTo(Integer reportsTo) {
         this.reportsTo = reportsTo;
     }
 
@@ -138,11 +138,11 @@ public class Employee {
         this.jobTitle = jobTitle;
     }
 
-    public int getVacationHours() {
+    public Integer getVacationHours() {
         return vacationHours;
     }
 
-    public void setVacationHours(int vacationHours) {
+    public void setVacationHours(Integer vacationHours) {
         this.vacationHours = vacationHours;
     }
 
