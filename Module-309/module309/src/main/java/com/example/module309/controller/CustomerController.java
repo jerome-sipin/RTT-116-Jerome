@@ -78,8 +78,10 @@ public class CustomerController {
     @GetMapping("/customer/edit/{customerId}")
     public ModelAndView editCustomer(@PathVariable Integer customerId) {
         ModelAndView response = new ModelAndView();
-
+        // this is the page primer for edit
         response.setViewName("customer/create");
+
+        LOG.debug("============= EDITING CUSTOMER " + customerId);
 
         Customer customer = customerDao.findById(customerId);
 
@@ -104,8 +106,6 @@ public class CustomerController {
         // this is called when the user clicks the submit button on the form
         ModelAndView response = new ModelAndView();
 
-        response.setViewName("customer/create");
-
         // manually do some validations here in the controller
 
         LOG.debug(form.toString());
@@ -114,9 +114,20 @@ public class CustomerController {
             for (ObjectError error : bindingResult.getAllErrors()) {
                 LOG.debug(error.toString());
             }
+            response.setViewName("customer/create");
             response.addObject("bindingResult", bindingResult);
+            response.addObject("form", form);
         } else {
-            Customer customer = new Customer();
+            // when this is a create the id in the form will be null
+            // when it is an edit the id in the form will be populated with the PK to edit
+            // in either case we can try to query the database and its either found or not
+            // if its not found in the database its a create
+            // if it is found in the database then its an edit
+            Customer customer = customerDao.findById(form.getId());
+            if ( customer == null ) {
+                customer = new Customer();
+            }
+
             customer.setCustomerName(form.getCompanyName());
             customer.setContactFirstname(form.getFirstName());
             customer.setContactLastname(form.getLastName());
@@ -129,6 +140,12 @@ public class CustomerController {
             customer.setEmployee(employee);
 
             customerDao.save(customer);
+
+            LOG.debug("============= SAVING CUSTOMER " + customer.getId());
+
+            // in either case ... create or edit .. I now want to redirect to the edit url
+            response.setViewName("redirect:/customer/edit/" + customer.getId() );
+
         }
 
         return response;
